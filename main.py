@@ -9,6 +9,7 @@ import multiprocessing
 
 import fruitRec
 import getImgFeature
+from getLBP import getLBP
 
 import pickle
 
@@ -22,13 +23,14 @@ def main(filename):
 
     color = getImgFeature.getColorFeature(oriImg, biImg)
     geo = getImgFeature.getGeoFeature(biImg)
+    LBP = getLBP(oriImg)
 
     area, length = geo
     eig = (length**2)/area
 
     # data.append([filename.split("\\")[1], color, eig])
 
-    return [filename.split("\\")[1], color, eig]
+    return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, LBP]
 
 
 if __name__ == '__main__':
@@ -45,7 +47,7 @@ if __name__ == '__main__':
     pool.join()
 
     print len(data)
-    with file("data2.dat", "w") as datafile:
+    with file("data_with_LBP.dat", "w") as datafile:
         pickle.dump(data, datafile)
 
     # z = np.zeros(len(data))

@@ -34,28 +34,36 @@ def getGeoFeature(img, showResult=None):
     area = getArea(img)                                                         # 图像非零点的个数即为图像的面积
 
     # 绘制二值图的边缘
-    contour = np.zeros(img.shape, np.uint8)
-    for i in range(height):
-        for j in range(width):                                                  # 从左到右判断第一个扫描到的点
-            if img[i][j] and not isIsolated(img, i, j):
-                contour[i][j] = 255
-                break
-        for j in reversed(range(width)):                                        # 从右往左
-            if img[i][j] and not isIsolated(img, i, j):
-                contour[i][j] = 255
-                break
+    # contour = np.zeros(img.shape, np.uint8)
+    # for i in range(height):
+    #     for j in range(width):                                                  # 从左到右判断第一个扫描到的点
+    #         if img[i][j] and not isIsolated(img, i, j):
+    #             contour[i][j] = 255
+    #             break
+    #     for j in reversed(range(width)):                                        # 从右往左
+    #         if img[i][j] and not isIsolated(img, i, j):
+    #             contour[i][j] = 255
+    #             break
 
-    for j in range(width):
-        for i in range(height):                                                 # 从上往下
-            if img[i][j] and not isIsolated(img, i, j):
-                contour[i][j] = 255
-                break
-        for i in reversed(range(height)):                                       # 从下往上
-            if img[i][j] and not isIsolated(img, i, j):
-                contour[i][j] = 255
-                break
+    # for j in range(width):
+    #     for i in range(height):                                                 # 从上往下
+    #         if img[i][j] and not isIsolated(img, i, j):
+    #             contour[i][j] = 255
+    #             break
+    #     for i in reversed(range(height)):                                       # 从下往上
+    #         if img[i][j] and not isIsolated(img, i, j):
+    #             contour[i][j] = 255
+    #             break
 
-    length = getArea(contour)                                                   # 边缘图像的非零点个数即为周长
+    # length = getArea(contour)                                                   # 边缘图像的非零点个数即为周长
+
+    # length = max([len(x) for x in cv2.Canny(img, 127, 200)])
+
+    contours = cv2.Canny(img, 127, 200)
+    lens = sorted([len(x) for x in contours], reverse=True)
+
+    length = lens[0]+lens[1]
+
 
     if showResult:
         # 显示/保存边缘图像
@@ -116,7 +124,7 @@ def main(filename, oriname):
 
     print 'Area:', area                                                           # 二值图面积
     print 'Length of countour:', length                                           # 二值图周长
-    print 'Geometry eigenvalue:', (length**2)/area                                         # 水果的形状参数
+    print 'Geometry eigenvalue:', (length**2)/area                                # 水果的形状参数
     print 'Average color:\n\
            \tR: %.1f, G: %.1f, B: %.1f'\
            % (color[2], color[1], color[0])                                       # 水果的平均色

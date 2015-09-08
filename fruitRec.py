@@ -13,48 +13,32 @@ def getEle(img):
 	#return grayImg
 	
 	#动态计算阈值
-	size = img.shape
-	outer = grayImg[0][0]
-	inner = grayImg[size[0]/2][size[1]/2]
-	thre = (int(outer)+int(inner))*0.44
+	# size = img.shape
+	# outer = grayImg[0][0]
+	# inner = grayImg[size[0]/2][size[1]/2]
+	# thre = (int(outer)+int(inner))*0.44
 	# print thre
 
 	biImg = cv2.threshold(grayImg,127,255,cv2.THRESH_BINARY_INV)[1]
 	# biImg = cv2.adaptiveThreshold(grayImg, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,25,2)
-	#biImg = adaptiveThreshold(grayImg,255,ADAPTIVE_THRESH_MEAN_C,THRESH_BINARY,5,2)
+	# biImg = adaptiveThreshold(grayImg,255,ADAPTIVE_THRESH_MEAN_C,THRESH_BINARY,5,2)
 	return biImg
 
-def fillEle(img):
-	u'''填充图像'''
-	edges = Canny(img, 100, 200)
-	# length, height = tuple(img.shape[:2])
-	print img.shape
-	black = np.zeros(img.shape[:2], bool)
-	for edge in edges:
-		print edge
-		# for p in edge:
-			# print p
-			# black[*p] = True
+def main(filename):
 
-	imshow("1", black)
+	OriImg = cv2.imread(filename)
 
-# def main(filename):
+	final = getEle(OriImg)
+	
+	cv2.imshow(filename, final)
+	key = cv2.waitKey(0)
+	if key == 27:
+		raise Exception
+	cv2.destroyWindow(filename)
+	cv2.destroyAllWindows()
 
-# 	OriImg = cv2.imread(filename)
-# 	k = fillEle(OriImg)
-
-# 	final = getEle(OriImg)
-# 	# imwrite('bin.jpg', final)
-# 	# for t, final in enumerate(it):
-# 	imshow(filename, final)
-# 	key = waitKey(0)
-# 	if key == 27:
-# 		raise Exception
-# 	# destroyWindow(filename)
-# 	destroyAllWindows()
-
-# if __name__ == '__main__':
-# 	for root, dirs, files in os.walk("../pictures"):
-# 		if files:
-# 			for fname in files:               
-# 				main(os.path.sep.join([root, fname]))
+if __name__ == '__main__':
+	for root, dirs, files in os.walk("../pictures"):
+		if files:
+			for fname in files:               
+				main(os.path.sep.join([root, fname]))
