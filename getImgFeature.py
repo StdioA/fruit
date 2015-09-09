@@ -88,12 +88,18 @@ def getColorFeature(img, bin, showAve=None):
             color: a numpy array made of [B, R, G], which means the average color of the image. 
     """
 
-    area = len(bin[bin.nonzero()])
+    # area = len(bin[bin.nonzero()])
+    area = 0
     height, width = tuple(bin.shape)
 
     colorSum = np.array([0,0,0])
-    for x, y in np.transpose(bin.nonzero()):
-        colorSum += img[x, y]
+    for x in xrange(height):
+        for y in xrange(width):
+            if not bin[x, y]:
+                colorSum += img[x, y]
+                area += 1
+    # for x, y in np.transpose(bin.nonzero()):
+    #     colorSum += img[x, y]
 
     aveColor = colorSum/area
 
@@ -104,6 +110,7 @@ def getColorFeature(img, bin, showAve=None):
                 aveImg[i, j] = aveColor
         cv2.imshow('Origin', img)
         cv2.imshow('aveColor', aveImg)                                            # 显示平均色, 将平均色表示为100*100的色块
+        cv2.imshow('bin', bin)
         key = cv2.waitKey(0)
         if key == 27:
             raise Exception('退出')
