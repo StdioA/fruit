@@ -6,12 +6,12 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 import multiprocessing
+import pickle
 
 import fruitRec
 import getImgFeature
 from getLBP import getLBP
 
-import pickle
 
 data = []
 
@@ -23,6 +23,7 @@ def main(filename):
 
     color = getImgFeature.getColorFeature(oriImg, biImg)
     geo = getImgFeature.getGeoFeature(biImg)
+    stripe = getImgFeature.getCannyStripe(oriImg)
     LBP = getLBP(oriImg)
 
     area, length = geo
@@ -30,7 +31,8 @@ def main(filename):
 
     # data.append([filename.split("\\")[1], color, eig])
 
-    return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, LBP]
+    # return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, LBP]
+    return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, stripe]
 
 
 if __name__ == '__main__':
@@ -47,7 +49,7 @@ if __name__ == '__main__':
     pool.join()
 
     print len(data)
-    with file("data_with_LBP.dat", "w") as datafile:
+    with file("data.dat", "w") as datafile:
         pickle.dump(data, datafile)
 
     # z = np.zeros(len(data))

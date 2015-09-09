@@ -136,6 +136,15 @@ def main(filename, oriname):
            \tR: %.1f, G: %.1f, B: %.1f'\
            % (color[2], color[1], color[0])                                       # 水果的平均色
 
+def getCannyStripe(img):
+    grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    thresholds = cv2.Canny(img, 300, 300)
+
+    area = reduce(lambda a,b: a*b, list(img.shape))
+
+    return len(thresholds[thresholds.nonzero()])/area*255
+
+    
 if __name__ == '__main__':
     fs = ['orange/bin.jpg', 'apple/bin.jpg', 'banana/bin.jpg']
     oris = ['orange/orange.jpg', 'apple/apple.jpg', 'banana/banana.jpg']
