@@ -142,7 +142,7 @@ def getCannyStripe(img):
 
     area = reduce(lambda a,b: a*b, list(img.shape))
 
-    return len(thresholds[thresholds.nonzero()])/area*255
+    return len(thresholds[thresholds.nonzero()])/area*25500
 
     
 if __name__ == '__main__':
