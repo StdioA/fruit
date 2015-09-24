@@ -32,7 +32,7 @@ def main(filename):
     # data.append([filename.split("\\")[1], color, eig])
 
     # return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, LBP]
-    return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, stripe]
+    return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color.tolist(), eig, stripe]
 
 
 if __name__ == '__main__':
@@ -49,7 +49,8 @@ if __name__ == '__main__':
     pool.join()
 
     print len(data)
-    with file("data.dat", "w") as datafile:
+    with file("data3.dat", "w") as datafile:
+        # print data
         pickle.dump(data, datafile)
 
     # z = np.zeros(len(data))
