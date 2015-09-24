@@ -1,21 +1,22 @@
 # coding: utf-8
 
+"""
+图片处理程序，返回图片特征
+"""
+
 from __future__ import division
 import os
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-import multiprocessing
-import pickle
 
 import fruitRec
 import getImgFeature
-from getLBP import getLBP
-
+# from getLBP import getLBP
 
 data = []
 
-def main(filename):
+def process(filename):
 
     oriImg = cv2.imread(filename)
 
@@ -24,7 +25,7 @@ def main(filename):
     color = getImgFeature.getColorFeature(oriImg, biImg)
     geo = getImgFeature.getGeoFeature(biImg)
     stripe = getImgFeature.getCannyStripe(oriImg)
-    LBP = getLBP(oriImg)
+    # LBP = getLBP(oriImg)
 
     area, length = geo
     eig = (length**2)/area

@@ -1,10 +1,14 @@
 # coding: utf-8
 
+"""
+机器学习程序
+"""
+
 import cPickle as pickle
 from sklearn import svm
 import numpy as np
 
-import main
+import picProcess
 
 def learn(filename):
     with file(filename, "r") as datafile:
@@ -28,7 +32,7 @@ def learn(filename):
     return clf
 
 def predict():
-    a = main.main(r'F:\SC\fruits\pear.jpg')
+    a = picProcess.process(r'F:\SC\fruits\pear.jpg')
     color, geo , strip= a[1], a[2], a[3]
     return clf.predict(np.concatenate((color, [geo], [strip])))
 
@@ -36,5 +40,6 @@ if __name__ == '__main__':
     clf = svm.SVC(gamma=0.001, C=100.)
     # clf = cluster.KMeans()
     learn("data3.dat")
-    print predict()[0].decode('utf-8').encode('gbk')
+    # print predict()[0].decode('utf-8').encode('gbk')
+    print predict()[0]
     

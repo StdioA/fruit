@@ -1,5 +1,9 @@
 # coding: utf-8
 
+"""
+图片特征提取库
+"""
+
 from __future__ import division
 import numpy as np
 import cv2
