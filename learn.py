@@ -7,39 +7,46 @@
 import cPickle as pickle
 from sklearn import svm
 import numpy as np
+import cv2
 
 import picProcess
 
-def learn(filename):
-    with file(filename, "r") as datafile:
-        data = pickle.load(datafile)
 
-    names = [x[0] for x in data]
-    color = [x[1] for x in data]
-    geo = [x[2] for x in data]
-    strip = [x[3] for x in data]
+class FLearner(object):
+    """\
+    The fruit recognizer
+    """
 
-    ndata = []
+    def __init__(self, dataset):
+        self.clf = svm.SVC(gamma=0.001, C=100.)
 
-    # for n in names:
-    #     print n.decode('utf-8').encode('utf-8')
+        with file(dataset, "r") as datafile:
+            data = pickle.load(datafile)
 
-    for c, g, s in zip(color, geo, strip):
-            ndata.append(np.concatenate((c, [g], [s]))) 
+        names = [x[0] for x in data]
+        color = [x[1] for x in data]
+        geo = [x[2] for x in data]
+        strip = [x[3] for x in data]
 
-    clf.fit(ndata, names)
+        ndata = []
 
-    return clf
+        for c, g, s in zip(color, geo, strip):
+                ndata.append(np.concatenate((c, [g], [s]))) 
+        self.clf.fit(ndata, names)
 
-def predict():
-    a = picProcess.process(r'F:\SC\fruits\pear.jpg')
-    color, geo , strip= a[1], a[2], a[3]
-    return clf.predict(np.concatenate((color, [geo], [strip])))
+    def predict(self, img):
+        data = picProcess.process(img)
+        color, geo , strip= tuple(data)
+        return self.clf.predict(np.concatenate((color, [geo], [strip])))
 
 if __name__ == '__main__':
-    clf = svm.SVC(gamma=0.001, C=100.)
-    # clf = cluster.KMeans()
-    learn("data3.dat")
-    # print predict()[0].decode('utf-8').encode('gbk')
-    print predict()[0]
+    
+    learner = FLearner("data3.dat")
+    # learn("data3.dat")
+
+    fname = r'F:\SC\fruits\banana1.jpg'
+    img = cv2.imread(fname)
+
+    print learner.predict(img)[0].decode('utf-8')#.encode('gb18030')
+    # print predict()[0]
     

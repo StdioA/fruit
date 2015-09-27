@@ -6,7 +6,13 @@
 
 import multiprocessing
 import pickle
+import cv2
 import picProcess
+
+def getData(fname):
+    img = cv2.imread(fname)
+    data = picProcess.process(img)
+    return [filename.split("\\")[1].decode('gbk').encode('utf-8')]+data
 
 def main(picDirName, dsFname):
     fnames = []
@@ -17,7 +23,7 @@ def main(picDirName, dsFname):
                 fnames.append(os.path.sep.join([root, fname]))
 
     pool = multiprocessing.Pool(4)
-    data = pool.map(picProcess.process, fnames)
+    data = pool.map(getData, fnames)
     pool.close()
     pool.join()
 

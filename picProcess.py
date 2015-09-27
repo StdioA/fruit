@@ -16,9 +16,9 @@ import getImgFeature
 
 data = []
 
-def process(filename):
+def process(oriImg):
 
-    oriImg = cv2.imread(filename)
+    # oriImg = cv2.imread(filename)
 
     biImg = fruitRec.getEle(oriImg)
 
@@ -30,10 +30,13 @@ def process(filename):
     area, length = geo
     eig = (length**2)/area
 
-    # data.append([filename.split("\\")[1], color, eig])
+    # cv2.imshow("ori", oriImg)
+    # cv2.imshow("bi", biImg)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
-    # return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color, eig, LBP]
-    return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color.tolist(), eig, stripe]
+    # return [filename.split("\\")[1].decode('gbk').encode('utf-8'), color.tolist(), eig, stripe]
+    return [color.tolist(), eig, stripe]
 
 
 if __name__ == '__main__':
