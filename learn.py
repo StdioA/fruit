@@ -18,7 +18,7 @@ class FLearner(object):
     """
 
     def __init__(self, dataset):
-        self.clf = svm.SVC(gamma=0.001, C=100.)
+        self.clf = svm.SVC(kernel='poly', degree=3,gamma=0.001, C=100.)
 
         with file(dataset, "r") as datafile:
             data = pickle.load(datafile)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     learner = FLearner("data3.dat")
     # learn("data3.dat")
 
-    fname = r'F:\SC\fruits\banana1.jpg'
+    fname = r'F:\git\fruit\fruits\orange.jpg'
     img = cv2.imread(fname)
 
     print learner.predict(img)[0].decode('utf-8')#.encode('gb18030')

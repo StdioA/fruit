@@ -8,11 +8,12 @@ import multiprocessing
 import pickle
 import cv2
 import picProcess
+import os
 
 def getData(fname):
     img = cv2.imread(fname)
     data = picProcess.process(img)
-    return [filename.split("\\")[1].decode('gbk').encode('utf-8')]+data
+    return [fname.split("\\")[1].decode('gbk').encode('utf-8')]+data
 
 def main(picDirName, dsFname):
     fnames = []
