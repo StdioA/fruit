@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'demo.ui'
 #
-# Created: Wed Sep 30 15:14:49 2015
+# Created: Wed Sep 30 15:50:35 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -39,13 +39,13 @@ class Ui_mainWindow(object):
         self.fnameButton.setGeometry(QtCore.QRect(310, 40, 75, 23))
         self.fnameButton.setObjectName(_fromUtf8("fnameButton"))
         self.recButton = QtGui.QPushButton(self.centralwidget)
-        self.recButton.setGeometry(QtCore.QRect(260, 80, 91, 41))
+        self.recButton.setGeometry(QtCore.QRect(290, 80, 91, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.recButton.setFont(font)
         self.recButton.setObjectName(_fromUtf8("recButton"))
         self.vecLabel = QtGui.QLabel(self.centralwidget)
-        self.vecLabel.setGeometry(QtCore.QRect(30, 80, 151, 71))
+        self.vecLabel.setGeometry(QtCore.QRect(30, 80, 231, 71))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.vecLabel.setFont(font)
@@ -59,11 +59,17 @@ class Ui_mainWindow(object):
         self.ansLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.ansLabel.setObjectName(_fromUtf8("ansLabel"))
         self.exitButton = QtGui.QPushButton(self.centralwidget)
-        self.exitButton.setGeometry(QtCore.QRect(260, 130, 91, 41))
+        self.exitButton.setGeometry(QtCore.QRect(290, 130, 91, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.exitButton.setFont(font)
         self.exitButton.setObjectName(_fromUtf8("exitButton"))
+        self.colorFrame = QtGui.QFrame(self.centralwidget)
+        self.colorFrame.setGeometry(QtCore.QRect(220, 84, 21, 21))
+        self.colorFrame.setAutoFillBackground(True)
+        self.colorFrame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.colorFrame.setFrameShadow(QtGui.QFrame.Raised)
+        self.colorFrame.setObjectName(_fromUtf8("colorFrame"))
         mainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(mainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))

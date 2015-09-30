@@ -13,7 +13,12 @@ QTextCodec.setCodecForTr(QTextCodec.codecForName("utf8"))
 class MainWindow(QMainWindow, Ui_mainWindow):
     def __init__(self, parent=None):
         super(MainWindow,self).__init__(parent)
+
+        # self.colorPalette = QPalette()
+        # # self.colorPalette.setGeometry(QtCore.QRect(220, 90, 21, 21))
+
         self.setupUi(self)
+        
         self.fnameButton.clicked.connect(self.selectFile)
         self.recButton.clicked.connect(self.recognize)
 
@@ -31,6 +36,13 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
         vecs = self.learner.getFeatureVector(img)
         color, geo , strip= tuple(vecs)
+
+        b, g, r = tuple(color)
+        bColor=QColor(r, g, b)
+        p=self.colorFrame.palette()  
+        p.setColor(QPalette.Window,bColor)  
+        self.colorFrame.setPalette(p)
+
         color = [int(x) for x in color]
         vecString = u"颜色参数: {color}\n几何参数: {geo}\n纹理参数: {strip}".format(
                 color=color, geo=round(geo, 1), strip=round(strip, 1))

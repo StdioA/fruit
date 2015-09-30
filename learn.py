@@ -44,10 +44,9 @@ class FLearner(object):
 
 if __name__ == '__main__':
     
-    learner = FLearner("data3.dat")
-    # learn("data3.dat")
+    # learner = FLearner("data3.dat")
 
-    fname = r'F:\git\fruit\fruits\orange.jpg'
+    fname = r'F:\banana.jpg'
     img = cv2.imread(fname)
 
     print learner.predict(img)[0].decode('utf-8')#.encode('gb18030')
