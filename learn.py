@@ -34,6 +34,9 @@ class FLearner(object):
                 ndata.append(np.concatenate((c, [g], [s]))) 
         self.clf.fit(ndata, names)
 
+    def getFeatureVector(self, img):
+        return tuple(picProcess.process(img))
+
     def predict(self, img):
         data = picProcess.process(img)
         color, geo , strip= tuple(data)
