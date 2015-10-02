@@ -25,7 +25,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.learner = FLearner("data3.dat")
 
     def selectFile(self):
-        fname=QFileDialog.getOpenFileName(self,"Open file dialog","/","Image files(*.jpg)")  
+        fname=QFileDialog.getOpenFileName(self,"Open file dialog","./","Image files(*.jpg)")  
         self.fnameLineEdit.setText(fname)
 
     def recognize(self):

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'demo.ui'
 #
-# Created: Wed Sep 30 15:50:35 2015
+# Created: Wed Sep 30 16:39:04 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,10 +33,10 @@ class Ui_mainWindow(object):
         self.centralwidget = QtGui.QWidget(mainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.fnameLineEdit = QtGui.QLineEdit(self.centralwidget)
-        self.fnameLineEdit.setGeometry(QtCore.QRect(20, 40, 281, 21))
+        self.fnameLineEdit.setGeometry(QtCore.QRect(85, 40, 241, 21))
         self.fnameLineEdit.setObjectName(_fromUtf8("fnameLineEdit"))
         self.fnameButton = QtGui.QPushButton(self.centralwidget)
-        self.fnameButton.setGeometry(QtCore.QRect(310, 40, 75, 23))
+        self.fnameButton.setGeometry(QtCore.QRect(335, 40, 75, 23))
         self.fnameButton.setObjectName(_fromUtf8("fnameButton"))
         self.recButton = QtGui.QPushButton(self.centralwidget)
         self.recButton.setGeometry(QtCore.QRect(290, 80, 91, 41))
@@ -70,6 +70,12 @@ class Ui_mainWindow(object):
         self.colorFrame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.colorFrame.setFrameShadow(QtGui.QFrame.Raised)
         self.colorFrame.setObjectName(_fromUtf8("colorFrame"))
+        self.label = QtGui.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(15, 40, 71, 21))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setObjectName(_fromUtf8("label"))
         mainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(mainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -88,4 +94,5 @@ class Ui_mainWindow(object):
 "纹理参数: ", None))
         self.ansLabel.setText(_translate("mainWindow", "识别结果：", None))
         self.exitButton.setText(_translate("mainWindow", "退出", None))
+        self.label.setText(_translate("mainWindow", "选择图片:", None))
 
