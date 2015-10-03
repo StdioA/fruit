@@ -1,12 +1,13 @@
 # coding: utf-8
 
 import sys
+import ConfigParser
 import cv2
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
-from demoUI import Ui_mainWindow
-from learn import FLearner
+from UI.demoUI import Ui_mainWindow
+from core.learn import FLearner
 
 QTextCodec.setCodecForTr(QTextCodec.codecForName("utf8"))
 
@@ -14,18 +15,18 @@ class MainWindow(QMainWindow, Ui_mainWindow):
     def __init__(self, parent=None):
         super(MainWindow,self).__init__(parent)
 
-        # self.colorPalette = QPalette()
-        # # self.colorPalette.setGeometry(QtCore.QRect(220, 90, 21, 21))
-
         self.setupUi(self)
         
         self.fnameButton.clicked.connect(self.selectFile)
         self.recButton.clicked.connect(self.recognize)
 
-        self.learner = FLearner("data3.dat")
+        config=ConfigParser.ConfigParser()
+        config.read("./settings.ini")
+        self.datasetPath = config.get("dataset", "path")
+        self.learner = FLearner(self.datasetPath)
 
     def selectFile(self):
-        fname=QFileDialog.getOpenFileName(self,"Open file dialog","./","Image files(*.jpg)")  
+        fname=QFileDialog.getOpenFileName(self,"Open Image File","./","Image files(*.jpg)")  
         self.fnameLineEdit.setText(fname)
 
     def recognize(self):
