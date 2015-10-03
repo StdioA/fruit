@@ -7,13 +7,25 @@
     <x>0</x>
     <y>0</y>
     <width>561</width>
-    <height>431</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>水果图片识别及处理</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>561</width>
+     <height>409</height>
+    </size>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -425,7 +437,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections>

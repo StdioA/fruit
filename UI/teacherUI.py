@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'teacher.ui'
 #
-# Created: Sat Oct 03 10:05:24 2015
+# Created: Sat Oct 03 10:47:35 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,8 +26,14 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(561, 431)
+        MainWindow.resize(561, 413)
         self.centralwidget = QtGui.QWidget(MainWindow)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
+        self.centralwidget.setSizePolicy(sizePolicy)
+        self.centralwidget.setMinimumSize(QtCore.QSize(561, 409))
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.label = QtGui.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(55, 250, 81, 16))
@@ -187,9 +193,6 @@ class Ui_MainWindow(object):
         self.colorFrame.setFrameShadow(QtGui.QFrame.Raised)
         self.colorFrame.setObjectName(_fromUtf8("colorFrame"))
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtGui.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(_fromUtf8("statusbar"))
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QObject.connect(self.quitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), MainWindow.close)
