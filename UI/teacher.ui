@@ -11,46 +11,73 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>水果图片识别及处理</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>55</x>
       <y>250</y>
-      <width>54</width>
-      <height>12</height>
+      <width>81</width>
+      <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>读入图像</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>215</x>
       <y>250</y>
-      <width>61</width>
-      <height>16</height>
+      <width>101</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>二值化图像</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>400</x>
       <y>250</y>
-      <width>54</width>
-      <height>12</height>
+      <width>71</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>纹理图像</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -58,9 +85,15 @@
      <rect>
       <x>71</x>
       <y>293</y>
-      <width>60</width>
-      <height>16</height>
+      <width>70</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>颜色参数：</string>
@@ -71,9 +104,15 @@
      <rect>
       <x>71</x>
       <y>377</y>
-      <width>60</width>
-      <height>16</height>
+      <width>70</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>纹理参数：</string>
@@ -84,9 +123,15 @@
      <rect>
       <x>71</x>
       <y>335</y>
-      <width>60</width>
-      <height>16</height>
+      <width>70</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>几何参数：</string>
@@ -97,21 +142,27 @@
      <rect>
       <x>290</x>
       <y>335</y>
-      <width>54</width>
-      <height>12</height>
+      <width>70</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>识别结果：</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_11">
+   <widget class="QLabel" name="label_1">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>77</x>
       <y>10</y>
       <width>61</width>
-      <height>21</height>
+      <height>25</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -120,31 +171,49 @@
       <height>12</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>选择图片：</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="exeButton">
     <property name="geometry">
      <rect>
       <x>140</x>
       <y>50</y>
       <width>81</width>
-      <height>21</height>
+      <height>26</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>开始识别</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="quitButton">
     <property name="geometry">
      <rect>
       <x>310</x>
       <y>50</y>
       <width>75</width>
-      <height>23</height>
+      <height>26</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>退出</string>
@@ -153,11 +222,17 @@
    <widget class="QPushButton" name="fnameButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>392</x>
       <y>10</y>
       <width>41</width>
-      <height>23</height>
+      <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="whatsThis">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;nn&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -175,6 +250,12 @@
       <height>150</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -190,6 +271,12 @@
       <width>150</width>
       <height>150</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
@@ -207,6 +294,12 @@
       <height>150</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -220,18 +313,30 @@
       <x>150</x>
       <y>10</y>
       <width>221</width>
-      <height>21</height>
+      <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="colorLabel">
     <property name="geometry">
      <rect>
-      <x>137</x>
+      <x>146</x>
       <y>293</y>
-      <width>54</width>
-      <height>16</height>
+      <width>120</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
@@ -240,24 +345,36 @@
    <widget class="QLabel" name="geoLabel">
     <property name="geometry">
      <rect>
-      <x>137</x>
+      <x>146</x>
       <y>335</y>
-      <width>54</width>
-      <height>16</height>
+      <width>120</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="stripeLabel">
+   <widget class="QLabel" name="stripLabel">
     <property name="geometry">
      <rect>
-      <x>137</x>
+      <x>146</x>
       <y>377</y>
-      <width>54</width>
-      <height>16</height>
+      <width>120</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
@@ -266,19 +383,67 @@
    <widget class="QLabel" name="ansLabel">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>369</x>
       <y>335</y>
-      <width>54</width>
-      <height>12</height>
+      <width>120</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="colorFrame">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>289</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>YaHei Consolas Hybrid</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>quitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>61</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

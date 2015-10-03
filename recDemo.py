@@ -26,13 +26,13 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.learner = FLearner(self.datasetPath)
 
     def selectFile(self):
-        fname=QFileDialog.getOpenFileName(self,"Open Image File","./","Image files(*.jpg)")  
+        fname = QFileDialog.getOpenFileName(self,"Open Image File","./","Image files(*.jpg)")  
         self.fnameLineEdit.setText(fname)
 
     def recognize(self):
         fname = self.fnameLineEdit.text()
         img = cv2.imread(str(fname))
-        answer = self.learner.predict(img)[0].decode('utf-8')
+        answer = self.learner.predict(img).decode('utf-8')
         self.ansLabel.setText(u"识别结果："+answer)
 
         vecs = self.learner.getFeatureVector(img)

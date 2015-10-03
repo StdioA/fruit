@@ -37,10 +37,15 @@ class FLearner(object):
     def getFeatureVector(self, img):
         return tuple(picProcess.process(img))
 
-    def predict(self, img):
+    def predict(self, img, debug=False):
         data = picProcess.process(img)
         color, geo , strip= tuple(data)
-        return self.clf.predict(np.concatenate((color, [geo], [strip])))
+
+        # debug模式返回特征向量
+        if debug:
+            return self.clf.predict(np.concatenate((color, [geo], [strip])))[0], color, geo, strip
+        else:
+            return self.clf.predict(np.concatenate((color, [geo], [strip])))[0]
 
 if __name__ == '__main__':
     
@@ -49,6 +54,6 @@ if __name__ == '__main__':
     fname = r'F:\apple.jpg'
     img = cv2.imread(fname)
 
-    # print learner.predict(img)[0].decode('utf-8')#.encode('gb18030')
-    print learner.predict(img)[0]
+    # print learner.predict(img).decode('utf-8')#.encode('gb18030')
+    print learner.predict(img)
     

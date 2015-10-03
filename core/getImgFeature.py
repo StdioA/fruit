@@ -122,6 +122,14 @@ def getColorFeature(img, bin, showAve=None):
 
     return aveColor
 
+def getCannyStripe(img):
+    grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    thresholds = cv2.Canny(img, 300, 300)
+
+    area = reduce(lambda a,b: a*b, list(img.shape))
+
+    return len(thresholds[thresholds.nonzero()])/area*25500
+
 def main(filename, oriname):
     ori = cv2.imread(oriname, cv2.IMREAD_COLOR)
     img = cv2.imread(filename, cv2.IMREAD_COLOR)
@@ -139,14 +147,6 @@ def main(filename, oriname):
     print 'Average color:\n\
            \tR: %.1f, G: %.1f, B: %.1f'\
            % (color[2], color[1], color[0])                                       # 水果的平均色
-
-def getCannyStripe(img):
-    grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    thresholds = cv2.Canny(img, 300, 300)
-
-    area = reduce(lambda a,b: a*b, list(img.shape))
-
-    return len(thresholds[thresholds.nonzero()])/area*25500
 
     
 if __name__ == '__main__':
