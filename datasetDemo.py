@@ -30,8 +30,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         picDirName = str(self.dataDirLineEdit.text())
         dsFname = str(self.datasetLineEdit.text())
         dsFname = os.path.join(dsFname, 'data.dat')
-        self.statusLabel.setText(u"正在生成数据集，程序可能无响应，请稍等")
-        self.statusLabel.show()
+
+        # thread = QThread
+        # self.statusLabel.setText(u"正在生成数据集，程序可能无响应，请稍等")
+        # self.statusLabel.show()
+        # __import__("time").sleep(3)
+        # QThread.sleep(3)
         makeDataset(picDirName, dsFname)
         self.statusLabel.setText(u"成功生成数据集！")
 

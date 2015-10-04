@@ -7,7 +7,8 @@ import cv2
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
-from UI.teacherUI import Ui_MainWindow
+# from UI.teacherUI import Ui_MainWindow
+from UI.showUI import Ui_MainWindow
 from core.learn import FLearner
 from core.fruitRec import getEle
 
@@ -32,7 +33,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def selectFile(self):
         fname = QFileDialog.getOpenFileName(self,"Open Image File","./","Image files(*.jpg)")  
-        self.fnameLineEdit.setText(fname)
+        if fname:
+            self.fnameLineEdit.setText(fname)
 
     def execute(self):
         # 打开文件

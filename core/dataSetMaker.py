@@ -13,7 +13,7 @@ import os
 def getData(fname):
     img = cv2.imread(fname)
     data = picProcess.process(img)
-    return [fname.split("\\")[1].decode('gbk').encode('utf-8')]+data
+    return [fname.split("\\")[-2].decode('gbk').encode('utf-8')]+data
 
 def makeDataset(picDirName, dsFname):
     fnames = []
@@ -34,4 +34,4 @@ def makeDataset(picDirName, dsFname):
         pickle.dump(data, datafile)
 
 if __name__ == '__main__':
-    makeDataset("../pictures", "data3.dat")
+    makeDataset("../../pictures", r"C:\Users\Stdio\Desktop\data3.dat")
