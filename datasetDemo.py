@@ -18,6 +18,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.datasetButton.clicked.connect(self.selectDatasetDir)
         self.exeButton.clicked.connect(self.makeDataset)
 
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.close()
+
     def selectDataDir(self):
         fname = QFileDialog.getExistingDirectory(self,"Open Data Directory","./")  
         self.dataDirLineEdit.setText(fname)

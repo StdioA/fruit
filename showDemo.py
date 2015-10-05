@@ -7,7 +7,6 @@ import cv2
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
-# from UI.teacherUI import Ui_MainWindow
 from UI.showUI import Ui_MainWindow
 from core.learn import FLearner
 from core.fruitRec import getEle
