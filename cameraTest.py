@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 
-import fruitRec
+from core import fruitRec
 
 class Camera(object):
     def __init__(self):
@@ -23,7 +23,7 @@ class Camera(object):
         return pix
 
     def test(self):
-        device = cv2.VideoCapture(1)
+        device = cv2.VideoCapture(0)
         offset = 0
 
         #     cv2.imshow("Img", img)

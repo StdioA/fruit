@@ -11,7 +11,7 @@ def OtsuGray( grayImage ,debug = 0):
     if type(grayImage) == cv.cvmat:
         grayImage = cv.GetImage(grayImage)
     elif isinstance(grayImage, np.ndarray):
-    	grayImage = cv.GetImage(cv.fromarray(grayImage))
+        grayImage = cv.GetImage(cv.fromarray(grayImage))
         
     # 创建Hist
     hist = cv.CreateHist([256],cv.CV_HIST_ARRAY,[[0,256]])
@@ -78,39 +78,39 @@ def OtsuGray( grayImage ,debug = 0):
 
 
 def getEle(img, otsu=False):
-	u'''二值化处理'''
-	LUVImg = cv2.cvtColor(img, cv2.COLOR_BGR2LUV)
+    u'''二值化处理'''
+    LUVImg = cv2.cvtColor(img, cv2.COLOR_BGR2LUV)
 
-	blurImg = cv2.medianBlur(LUVImg, 5)
-	grayImg = cv2.cvtColor(blurImg, cv2.COLOR_BGR2GRAY)
+    blurImg = cv2.medianBlur(LUVImg, 5)
+    grayImg = cv2.cvtColor(blurImg, cv2.COLOR_BGR2GRAY)
 
-	if otsu:
-		threshold = OtsuGray(grayImg)-8
-	else:
-		threshold = 127
+    if otsu:
+        threshold = OtsuGray(grayImg)-8
+    else:
+        threshold = 120
 
-	biImg = cv2.threshold(grayImg, threshold, 255, cv2.THRESH_BINARY_INV)[1]
-	# biImg = cv2.adaptiveThreshold(grayImg, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,25,2)
-	# biImg = adaptiveThreshold(grayImg,255,ADAPTIVE_THRESH_MEAN_C,THRESH_BINARY,5,2)
-	return biImg
+    biImg = cv2.threshold(grayImg, threshold, 255, cv2.THRESH_BINARY_INV)[1]
+    # biImg = cv2.adaptiveThreshold(grayImg, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,25,2)
+    # biImg = adaptiveThreshold(grayImg,255,ADAPTIVE_THRESH_MEAN_C,THRESH_BINARY,5,2)
+    return biImg
 
 def main(filename):
 
-	OriImg = cv2.imread(filename)
+    OriImg = cv2.imread(filename)
 
-	final = getEle(OriImg)
-	
-	cv2.imshow(filename, final)
-	cv2.imshow(filename+'otsu', getEle(OriImg, True))
-	key = cv2.waitKey(0)
-	if key == 27:
-		raise KeyboardInterrupt
-	cv2.destroyWindow(filename)
-	cv2.destroyAllWindows()
+    final = getEle(OriImg)
+    
+    cv2.imshow(filename, final)
+    cv2.imshow(filename+'otsu', getEle(OriImg, True))
+    key = cv2.waitKey(0)
+    if key == 27:
+        raise KeyboardInterrupt
+    cv2.destroyWindow(filename)
+    cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-	# main('F:/banana.jpg')
-	for root, dirs, files in os.walk("../pictures"):
-		if files:
-			for fname in files:               
-				main(os.path.sep.join([root, fname]))
+    # main('F:/banana.jpg')
+    for root, dirs, files in os.walk("../pictures"):
+        if files:
+            for fname in files:               
+                main(os.path.sep.join([root, fname]))

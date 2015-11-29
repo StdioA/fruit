@@ -7,7 +7,7 @@
 from __future__ import division
 import os
 import cv2
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 
 import fruitRec
@@ -21,7 +21,6 @@ def process(oriImg):
     # oriImg = cv2.imread(filename)
 
     biImg = fruitRec.getEle(oriImg)
-
     color = getImgFeature.getColorFeature(oriImg, biImg)
     geo = getImgFeature.getGeoFeature(biImg)
     stripe = getImgFeature.getCannyStripe(oriImg)

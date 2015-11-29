@@ -3,6 +3,7 @@
 import sys
 import os
 import ConfigParser
+import numpy as np
 import cv2
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -44,7 +45,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             os.mkdir('./temp')
         
         # 打开摄像头
-        self.device = cv2.VideoCapture(1)
+        self.device = cv2.VideoCapture(0)
         if not self.device.isOpened():
             self.device = cv2.VideoCapture(0)
         if not self.device.isOpened():
@@ -53,7 +54,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 建立时钟
         self.timer = QTimer(self.photoLabel)
         self.timer.timeout.connect(self.flushImage)
-        self.timer.start(0)
+        self.timer.start(200)
 
         self.fruitname = ""
         self.lastfruitname = ""
@@ -65,6 +66,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def flushImage(self):
         img = self.device.read()[1]
+        
+        # p = img[70, 70]
+        # m = 255-(sum(p)/3)
+        # img += m*0.5
+        # print img[70, 70]
+        # img *= 1.15
+        # img += 30
+
         cv2.imwrite("./temp/image.jpg", img)
 
         pixmap = QPixmap()
@@ -84,8 +93,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lastfruitname = self.fruitname
 
     def calTotalValue(self):
-        value = int(self.valueEdit.text())
-        weight = int(self.weightEdit.text())
+        value = float(self.valueEdit.text())
+        weight = float(self.weightEdit.text())
         total = value*weight
         self.totalEdit.setText(str(total))
 
